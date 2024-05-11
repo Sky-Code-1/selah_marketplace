@@ -8,20 +8,28 @@ import Product from './pages/Product';
 import AddProduct from './pages/AddProduct';
 import Login from './pages/Login';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'; 
+import { Provider } from 'react-redux';
+import store from './app/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />
-  },
-  {
-    path: '/products',
-    element: <Product />
-  },
-  {
-    path: '/products/add',
-    element: <AddProduct />
+    element: <App />,
+    children: [
+      {
+        path: '/home',
+        element: <Home />
+      },
+      {
+        path: '/products',
+        element: <Product />
+      },
+      {
+        path: '/products/add',
+        element: <AddProduct />
+      }
+    ]
   },
   {
     path: '/login',
@@ -34,9 +42,9 @@ const router = createBrowserRouter([
 ])
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}>
-      <App />
-    </RouterProvider>
+    <Provider store={store}>
+      <RouterProvider router={router}/>
+    </Provider>
   </React.StrictMode>
 );
 

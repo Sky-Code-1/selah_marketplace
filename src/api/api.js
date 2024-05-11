@@ -8,12 +8,14 @@ const axiosInstance = axios.create(axiosParams)
 
 const api = {
     get: (url, config = {}) => {
+        console.log(`Request Config for get request ${JSON.stringify(config)}`)
         return axiosInstance.get(url, config)
     },
     delete: (url, config = {}) => {
         return axiosInstance.delete(url, config)
     }, 
     post: (url, body, config = {}) => {
+        console.log(`Request Config from api file ${JSON.stringify(config)}`)
         return axiosInstance.post(url, body, config)
     },
     put: (url, body, config = {}) => {
