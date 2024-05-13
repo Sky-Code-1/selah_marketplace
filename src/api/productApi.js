@@ -11,7 +11,7 @@ export const addProduct = async (product, config) => {
 }
 
 export const fetchProducts = async () => {
-    return api.get(productUrl).then(res => res.data)
+    return api.get(productUrl)
 }
 
 export const deleteProduct = async (id) => {

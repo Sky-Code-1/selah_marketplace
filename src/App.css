@@ -39,3 +39,28 @@
 button{
   cursor: pointer;
 }
+
+#fileInput {
+  /* Hide the default file input button */
+  display: none;
+}
+
+/* Create a custom button with a "+" symbol */
+label[for="fileInput"] {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #eee;
+  color: #333;
+  /* Style the "+" symbol */
+  content: "+";
+  text-align: center;
+  line-height: normal;
+}
+
+/* Style the hover effect for the custom button */
+label[for="fileInput"]:hover {
+  background-color: #ddd;
+}

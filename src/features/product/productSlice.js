@@ -38,7 +38,7 @@ export const productSlice = createSlice({
             state.status = 'pending'
         })
         .addCase(getAllProducts.fulfilled, (state,action) => {
-            state.productList = action.payload._embedded.products
+            state.productList = action.payload.data
             state.status = 'success'
         })
         .addCase(getAllProducts.rejected, (state, action) => {

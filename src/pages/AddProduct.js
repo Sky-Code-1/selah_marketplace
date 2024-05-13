@@ -9,10 +9,13 @@ const AddProduct = () => {
     name: '', 
     price: ''
   })
-  const [image, setImage] = useState(myImage)
+
+  const [image, setImage] = useState([myImage])
+
   const onInputChange = (e) => {
     setProduct({...product, [e.target.name]: e.target.value})
   }
+
   const saveProduct = () => {
     const newProduct = {...product, date: new Date().toISOString()}
     const stringifiedProduct = JSON.stringify(newProduct)
@@ -24,11 +27,22 @@ const AddProduct = () => {
     };
     var formData = new FormData()
     formData.append('product', stringifiedProduct)
-    formData.append('image', image)
-    console.log(image.name)
+    console.log(`Length of Image ${image.length}`)
+    if (image) {
+      for (let i = 0; i < image.length; i++) {
+        formData.append('image', image[i]);
+        console.log(image[i].name)
+      }
+    }
     dispatch(createNewProduct(formData, axiosRequestConfig))
+    setImage('')
     setProduct({...product, name: '', price: ''})
   }
+  
+  const onFileInputChange = (e) => {
+    setImage(e.target.files); // Set the selected file(s) directly
+  };
+
   return (
     <div>
       <p>Add Product Page</p>
@@ -48,12 +62,20 @@ const AddProduct = () => {
           value={product.price}
           onChange={onInputChange}
         />
-        <input 
-          type='file'
-          name='image'
-          placeholder='upload image' 
-          onChange={(e) => setImage(e.target.files[0])}
-        />
+        <div>
+          <label htmlFor='fileInput'> + <br/>
+            <p>Upload File</p>
+          </label>
+          <input 
+            type='file'
+            name='image'
+            id='fileInput'
+            placeholder='upload image' 
+            className='file-input'
+            multiple
+            onChange={onFileInputChange}
+          />
+        </div>
         <button onClick={() => saveProduct()} type='button'>Save Product</button>
       </form>
     </div>
