@@ -1,50 +1,30 @@
-.App {
-  text-align: center;
+:root{
+  --max-width: 1260px;
+  --text-color: #ccc;
+  --primary-bg: #e0960c;
+  --secondary-bg: #8e5e5e;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 button{
   cursor: pointer;
 }
 
+.logo-div {
+  margin-top: -0.5rem;
+  display: flex;
+}
 #fileInput {
   /* Hide the default file input button */
   display: none;
 }
 
+li{
+  list-style: none;
+}
 /* Create a custom button with a "+" symbol */
 label[for="fileInput"] {
   display: inline-block;
@@ -63,4 +43,247 @@ label[for="fileInput"] {
 /* Style the hover effect for the custom button */
 label[for="fileInput"]:hover {
   background-color: #ddd;
+}
+/** Styling for the Product page */
+.products-container {
+  display: flex;
+  padding: 0rem 5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.product-item-container{
+  display: flex;
+  flex: 1;
+  padding: 0.5rem;
+  margin: 1rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-item-container button{
+  display: flex;
+  flex: 1;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.product-item-price-container{
+  display: flex;
+  flex-grow: 1;
+  width: fit-content;
+  justify-content: space-between;
+  align-items: center;
+}
+.image-container{
+  display: flex;
+}
+input {
+  display: block;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+
+/** Navbar Styling */
+.navbar{
+  color: --primary-bg;
+  background-color: var(--primary-bg);
+  display: flex;
+  padding: 1rem 4rem;
+  width: 100%;
+  
+}
+.navbar h1{
+  font-size: 1rem;
+}
+.navbar div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  color: var(--secondary-bg);
+}
+.navbar div ul{
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0rem 2rem;
+}
+.navbar div ul li {
+  padding: 0rem 0.5rem;
+}
+.navbar a{
+  color: var(--text-color);
+  text-decoration: none;
+}
+.navbar a:hover{
+  color: var(--primary-color)
+}  
+.logo-div {
+  display: flex;
+  align-items: center;
+  justify-content: cen;
+  color: var(--primary-bg);
+}
+.logo-div h1 {
+  color: var(--primary-bg);
+  margin-top: 0.75rem;
+  margin-left: -0.9rem;
+  font-size: 20px;
+}
+.logo-img{
+  width: 45px;
+  height: 45px;
+}
+header {
+  padding: 1rem 5rem;
+  display: flex;
+  justify-content: center;
+  box-shadow: 1px 1px 1px #ccc;
+}
+header > div{
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header div ul {
+  margin: 0rem 2rem;
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+header div ul li {
+  margin: 0rem 0.5rem;
+}
+.search-input {
+  border: none;
+  background-color: #f4f4f4;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+a:hover {
+  color: var(--primary-bg);
+  text-decoration: underline;
+}
+main {
+  padding: 0rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+nav {
+  padding: 1rem;
+  height: fit-content;
+  box-shadow: 1px 0px #ccc;
+}
+main nav button {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  padding: 0.75rem;
+  text-align: left;
+}
+main nav button:hover {
+  background-color: var(--primary-bg);
+  color: #fff;
+}
+.home-div-1 {
+  display: flex;
+  flex: 1;
+}
+.imagepane-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+.imagepane{
+  flex: 1;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 3rem;
+  margin: 2rem;
+}
+.imagepane div {
+  flex: 1;
+}
+.imagepane-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex: 1;
+}
+.imagepane-text p {
+  margin: 2rem 0rem;
+}
+.imagepane div img {
+  width: 80%;
+  height: 80%;
+}
+
+/** Product Details Styling */
+.product-details {
+  /* margin-right: 1rem; */
+}
+.product-image {
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  margin-bottom: 0.75rem;
+  border-radius: 10px;
+}
+.product-image img {
+  width: 200px;
+  height: 180px;
+  border-radius: 5px;
+}
+.product-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  box-shadow: 0px 1px 0px #ccc;
+  margin: 3rem 0rem;
+}
+.desc-div {
+  display: flex;
+  color: var(--primary-bg);
+}
+.box-div {
+  width: 20px;
+  border-radius: 3px;
+  background-color: var(--primary-bg);
+}
+.desc-div p{
+  flex: 1;
+  padding: 1rem 0.5rem;
+  font-weight: bold;
+  /* font-family: Arial; */
+}
+.trending-product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.product-list h2 {
+  margin: 1.5rem 0rem;
+}
+/** Utility Classes */
+
+.bold-text {
+  font-size: 18px;
+  font-weight: 400;
+}
+.price-text {
+  color: var(--primary-bg);
+  margin: 0.5rem 0rem;
 }

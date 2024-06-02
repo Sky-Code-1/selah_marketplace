@@ -1,1 +1,0 @@
-export const IMAGE_URL = 'https://firebasestorage.googleapis.com/v0/b/selah-marketplace.appspot.com/o/'

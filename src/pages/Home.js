@@ -1,22 +1,55 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
-import { allProducts, getAllProducts } from '../features/product/productSlice'
-import { IMAGE_URL } from '../api/firebaseApi'
-   
+import Navbar from '../components/Navbar'
+import ImagePane from '../components/ImagePane'
+import ProductItem from '../components/ProductItem'
+import Tag from '../components/Tag'
+import { useSelector } from 'react-redux'
+import { category, services } from '../app/utilities'
+
 const Home = () => {
-  const imageUrl = `${IMAGE_URL}Peanuts?alt=media&token=35afd1a8-3393-4c20-9580-89aec53c3c90`
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getAllProducts())
-  }, [])
-  const products = useSelector(allProducts)
-  console.log(products)
+  
+  const products = useSelector(state => state.products);
   return (
-    <div>
-        <p>Home Page</p>  
-        <img src={imageUrl} />
-    </div>
+    <>
+        <div className='home-div-1'>
+            <Navbar />
+            <ImagePane />
+        </div>
+        <div className='product-list'>
+            <Tag status="Today's Pick" category="Trending Sales" />
+            <div className='trending-product-list'>
+                {products.map(product => (
+                <ProductItem product={product}/>
+                ))}
+            </div>
+            <div className='category-btn-container'>
+                <button className='sell-btn'>View All Product</button>
+            </div>
+        </div>
+        <div className='product-list'>
+            <Tag status="Categories" category="Browse By Category" />
+            <div className='trending-product-list category-buttons-container'>
+                {category.map(c => <button className='category-button'><>{c.element}<p>{c.name}</p></></button>)}
+            </div>
+        </div>
+        <div className='product-list'>
+            <Tag status="Need Support" category="Browse Available Services" />
+            <div className='trending-product-list category-buttons-container'>
+                {services.map(service => <button className='category-button'><>{service.element}<p>{service.name}</p></></button>)}
+            </div>
+        </div>
+        <div className='product-list'>
+            <Tag status="Top Stores For the Month" category="Explore products from verified stores" />
+            <div className='trending-product-list'>
+                {products.map(product => (
+                <ProductItem product={product}/>
+                ))}
+            </div>
+            <div className='category-btn-container'>
+                <button className='sell-btn'>See All Store</button>
+            </div>
+        </div>
+    </>
   )
 }
 
