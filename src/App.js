@@ -4,6 +4,7 @@ import Header from './components/Header';
 import './App.css'
 import Home from './pages/Home';
 import Footer from './components/Footer';
+import SelectedProduct from './components/SelectedProduct';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/product' element={<SelectedProduct />} />
         </Routes>  
       </main>
       <Footer />

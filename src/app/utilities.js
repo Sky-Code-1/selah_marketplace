@@ -1,5 +1,5 @@
 import { MdBookOnline, MdCoffee, MdDeliveryDining, MdDryCleaning, MdHouse, MdPhoneIphone, MdPrint } from 'react-icons/md'
-import { FaForward, FaBackward, FaPhone, FaLaptop, FaBook, FaApple, FaBirthdayCake } from 'react-icons/fa'
+import { FaForward, FaBackward, FaPhone, FaLaptop, FaBook, FaApple, FaBirthdayCake, FaTshirt } from 'react-icons/fa'
 
 
 export const category = [
@@ -49,5 +49,9 @@ export const category = [
     {
         name: 'Package Delivery',
         element: <MdDeliveryDining size={50} />
+    },
+    {
+        name: 'Fashion Designs',
+        element: <FaTshirt size={50} />
     }
   ]

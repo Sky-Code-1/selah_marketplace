@@ -31,11 +31,11 @@ const Footer = () => {
         <h2>Download App</h2>
         <p><Link>My Account</Link></p>
         <p><Link>Cart</Link></p>
-        <div>
-          <FaFacebook />
-          <FaInstagram />
-          <FaLinkedin />
-          <FaXTwitter />
+        <div className="socials-containers">
+          <Link><FaFacebook /></Link>
+          <Link><FaInstagram /></Link>
+          <Link><FaLinkedin /></Link>
+          <Link><FaXTwitter /></Link>
         </div>
       </div>
       <div className='copyright-div'>

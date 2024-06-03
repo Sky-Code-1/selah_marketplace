@@ -5,9 +5,11 @@ import ProductItem from '../components/ProductItem'
 import Tag from '../components/Tag'
 import { useSelector } from 'react-redux'
 import { category, services } from '../app/utilities'
+import StoreItem from '../components/StoreItem'
 
 const Home = () => {
   
+  const stores = useSelector(state => state.store);
   const products = useSelector(state => state.products);
   return (
     <>
@@ -41,8 +43,8 @@ const Home = () => {
         <div className='product-list'>
             <Tag status="Top Stores For the Month" category="Explore products from verified stores" />
             <div className='trending-product-list'>
-                {products.map(product => (
-                <ProductItem product={product}/>
+                {stores.map(store => (
+                    <StoreItem store={store}/>
                 ))}
             </div>
             <div className='category-btn-container'>
