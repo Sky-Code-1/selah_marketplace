@@ -164,8 +164,35 @@ header div ul {
 header div ul li {
   margin: 0rem 0.5rem;
 }
+.header-search-container {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+.header-search-box {
+  display: flex;
+}
+.icon-container {
+  display: flex;
+  align-items: center;
+  color: transparent;
+}
+.icon-container button {
+  border: none;
+  background-color: transparent;
+  margin: 0rem 0.25rem;
+}
+.header-search-container button {
+  border: none;
+  position: absolute;
+  right: 20px;
+}
 .search-input {
   border: none;
+  padding: 0.75rem;
+  padding-right: 2.5rem;
+  flex: 1;
   background-color: #f4f4f4;
 }
 a {
@@ -182,6 +209,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: start;
+  margin-top: 4rem;
 }
 nav {
   padding: 1rem;
@@ -237,6 +265,10 @@ main nav button:hover {
 
 /** Product Details Styling */
 .product-details {
+  margin: 1rem 0.25rem;
+  border: solid 1px #f4f4f4;
+  padding: 1rem;
+  border-radius: 5px;
 }
 .product-image {
   position: relative;
@@ -246,6 +278,9 @@ main nav button:hover {
   padding: 2rem;
   margin-bottom: 0.75rem;
   border-radius: 10px;
+}
+.product-path-paragraph {
+  width: 100%;
 }
 .product-icon-container {
   position: absolute;
@@ -258,8 +293,8 @@ main nav button:hover {
   justify-content: space-between;
 }
 .product-image img {
-  width: 200px;
-  height: 180px;
+  width: 150px;
+  height: 120px;
   border-radius: 5px;
 }
 .product-list {
@@ -362,39 +397,99 @@ main nav button:hover {
   right: 20px;
 }
 .single-product-container {
-  display: flex;
-  flex: 1;
-  height: fit-content;
-  align-items: center;
-  justify-content: space-around;
-  margin: 3rem 0rem;
-}
-.image-list-container { 
+  margin: 2rem 0rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
+  flex: 1;
 }
-.image-list-container img {
-  width: 70px;
-  height: 60px;
+.main-image-container, .product-detail-div {
+  background-color: #f4f4f4;
+  margin: 1rem 2rem;
+  flex: 1;
+}
+.image-list-container {
+  width: 100px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .image-list-container button {
-  background-color: #ccc;
-  padding: 0.5rem;
   border: none;
-  border-radius: 5px;
+  width: fit-content;
+  padding: 0.25rem;
   margin: 0.5rem 0rem;
+  background-color: #f4f4f4;
+  border-radius: 4px;
+}
+.image-list-container button img {
+  width: 70px;
+  height: 70px;
 }
 .main-image-container {
-  flex: 1;
+  padding: 1rem;
   display: flex;
+  align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 365px;
-  background-color: #ccc;
-  margin: 0rem 2rem;
+}
+.main-image-container img {
+  width: 90%;
+  height: 350px;
 }
 .product-detail-div {
+  background-color: transparent;
+}
+.product-detail-div p {
+  margin: 1rem 0rem;
+}
+.margin-bottom {
+  margin-bottom: 2rem;
+}
+.profile-page-div{
+  width: 100%;
+  padding: 4rem 0rem;
+  display: flex;
+  justify-content: space-between;
+}
+.profile-page-div nav {
+  box-shadow: none;
+}
+.profile-form-div{
+  width: 100%;
+  flex: 1;
+  padding: 0rem 5rem;
+  display: flex;
+}
+.profile-form-div > form{
+  display: flex;
   flex: 1;
   flex-direction: column;
+  justify-content: space-between;
+}
+.profile-form-div form > div {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.profile-form-div form > div > div > input {
+  flex: 1;
+  width: 350px;
+  background-color: #f4f4f4;
+  border: none;
+  padding: 0.75rem;
+  margin: 1rem 0rem;
+}
+.password-change-div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.password-change-div input {
+  flex: 1;
+  margin: 0rem;
+  margin: 1rem 0rem;
+  padding: 0.75rem;
+  border: none;
+  background-color: #f4f4f4;
 }
