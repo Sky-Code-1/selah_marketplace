@@ -17,12 +17,11 @@ const ProductImage = () => {
     const handleFileChange = (event) => {
         
         const selectedFiles = event.target.files;
-        const urls = Array.from(selectedFiles).map(file => URL.createObjectURL(file));
         // setImageURLs(urls);
-        console.log(`New Length of File ${urls.length}`)
-        setFiles([...files, urls]);
+        console.log(`New Length of File ${selectedFiles.length}`)
+        setFiles([...files, ...selectedFiles]);
     }
-
+    useEffect(() => {}, [])
     const Images = ({src, index}) => (
         <div className='pre-product-image-container'>
             <button type='button' onClick={() => deleteImage(index)}><MdCancel size={25}/></button>
@@ -34,7 +33,7 @@ const ProductImage = () => {
   return (
     <div>
       <div className='wrap flex'>
-        {files.map((file, id) => <Images key={id} index={id} src={file}/>)}    
+        {files.map((file, id) => <Images key={id} index={id} src={URL.createObjectURL(file)}/>)}    
       </div>
       <input className='file-input'
         type='file' 
