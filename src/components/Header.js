@@ -13,6 +13,12 @@ const Header = () => {
     const navigateToWishList = () => {
         navigate("/wishlist")
     }
+    const navigateToProfile = () => {
+        navigate("/profile")
+    }
+    const navigateToAddProduct = () => {
+        navigate("/add/product")
+    }
   return (
 
     <header>
@@ -22,8 +28,8 @@ const Header = () => {
             </div>
             <ul style={{flex: 1, display: 'flex', justifyContent: 'center'}}>
                 <li><Link to={'/'}>Home</Link></li>
-                <li><Link to={'/'}>Contact</Link></li>
-                <li><Link to={'/'}>About</Link></li>
+                <li><Link to={'/contact'}>Contact</Link></li>
+                <li><Link to={'/about'}>About</Link></li>
                 <li><Link to={'/register'}>Sign Up</Link></li>
             </ul>
             <div className='header-search-box'>
@@ -34,13 +40,12 @@ const Header = () => {
                 <div className='icon-container'>
                     <button onClick={navigateToWishList}><WishlistIcon /></button>
                     <CartIcon />
-                    <ProfileIcon />
+                    <button onClick={navigateToProfile}><ProfileIcon /></button>
                 </div>
-                
             </div>
             
             <div>
-                <button className='sell-btn' type='button'>Sell</button>
+                <button className='sell-btn' type='button' onClick={navigateToAddProduct}>Sell</button>
                 <button className='sell-btn' type='button'>Store</button>
             </div>
         </div>

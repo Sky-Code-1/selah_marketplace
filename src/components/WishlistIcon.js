@@ -3,9 +3,7 @@ import wishlist from '../img/wishlist.svg';
 
 const WishlistIcon = () => {
   return (
-    <button>
-      <img src={wishlist}></img>
-    </button>
+    <img src={wishlist}></img>
   )
 }
 

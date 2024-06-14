@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { category } from "../../app/utilities";
 
 
 const initialProducts = [
@@ -8,7 +9,8 @@ const initialProducts = [
         price: 300,
         ratings: 9.7,
         description: 'Juicy Delicious and Satisfactory',
-        image: ''
+        image: '',
+        category: 'Confectionaries'
     },
     {
         id: 2,
@@ -16,7 +18,8 @@ const initialProducts = [
         price: 300,
         ratings: 9.7,
         description: 'Swift Elegant and Nice',
-        image: ''
+        image: '',
+        category: 'Phones'
     },
     {
         id: 3,
@@ -24,7 +27,8 @@ const initialProducts = [
         price: 300,
         ratings: 9.7,
         description: 'Juicy Delicious and Satisfactory',
-        image: ''
+        image: '',
+        category: 'Food'
     },
     {
         id: 4,
@@ -32,7 +36,8 @@ const initialProducts = [
         price: 300,
         ratings: 9.7,
         description: 'Juicy Delicious and Satisfactory',
-        image: ''
+        image: '',
+        category: 'computer'
     }
 ]
 export const productSlice = createSlice({
@@ -43,4 +48,5 @@ export const productSlice = createSlice({
     }
 })
 
+export const categoryProduct = category => initialProducts.filter(product => (product.category.contains(category)))
 export default productSlice.reducer

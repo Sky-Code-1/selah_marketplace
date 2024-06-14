@@ -3,9 +3,7 @@ import profileIcon from '../img/user.svg';
 
 const ProfileIcon = () => {
   return (
-    <button>
-      <img src={profileIcon}></img>
-    </button>
+    <img src={profileIcon}></img>
   )
 }
 
