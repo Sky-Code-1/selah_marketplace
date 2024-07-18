@@ -6,6 +6,7 @@ import WishlistIcon from './WishlistIcon'
 import ProfileIcon from './ProfileIcon'
 import CartIcon from './CartIcon'
 import { useNavigate } from 'react-router-dom'
+import { MdMessage } from 'react-icons/md'
 
 
 const Header = () => {
@@ -18,6 +19,15 @@ const Header = () => {
     }
     const navigateToAddProduct = () => {
         navigate("/add/product")
+    }
+    const navigateToAddStore = () => {
+        navigate("/add/store")
+    }
+    const navigateToMessages = () => {
+        navigate("/messages")
+    }
+    const navigateToCart = () => {
+        navigate("/cart")
     }
   return (
 
@@ -39,14 +49,15 @@ const Header = () => {
                 </div>
                 <div className='icon-container'>
                     <button onClick={navigateToWishList}><WishlistIcon /></button>
-                    <CartIcon />
+                    <button onClick={navigateToCart}><CartIcon /></button>
+                    <button onClick={navigateToMessages}><MdMessage size={19} color='#222'/></button>
                     <button onClick={navigateToProfile}><ProfileIcon /></button>
                 </div>
             </div>
             
             <div>
                 <button className='sell-btn' type='button' onClick={navigateToAddProduct}>Sell</button>
-                <button className='sell-btn' type='button'>Store</button>
+                <button className='sell-btn' type='button' onClick={navigateToAddStore}>Store</button>
             </div>
         </div>
     </header>

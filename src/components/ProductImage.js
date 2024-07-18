@@ -43,7 +43,7 @@ const ProductImage = () => {
         accept='image/*'
         multiple
       /> 
-      <button type='button' onClick={handleAddImage}>Add New Image</button>
+      <button type='button' onClick={handleAddImage}>Add A New Image</button>
     </div>
   )
 }

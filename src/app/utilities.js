@@ -1,5 +1,6 @@
-import { MdBookOnline, MdCoffee, MdDeliveryDining, MdDryCleaning, MdHouse, MdPhoneIphone, MdPrint } from 'react-icons/md'
-import { FaForward, FaBackward, FaPhone, FaLaptop, FaBook, FaApple, FaBirthdayCake, FaTshirt } from 'react-icons/fa'
+import { MdBookOnline, MdUpgrade, MdStore, MdPeople, MdCoffee, MdDeliveryDining, MdDryCleaning, MdHouse, MdPhoneIphone, MdPrint } from 'react-icons/md'
+import { FaForward, FaBackward, FaPhone, FaLaptop, FaBook, FaApple, FaBirthdayCake, FaTshirt, FaDollarSign } from 'react-icons/fa'
+import { FaNairaSign } from 'react-icons/fa6'
 
 
 export const category = [
@@ -53,5 +54,23 @@ export const category = [
     {
         name: 'Fashion Designs',
         element: <FaTshirt size={50} />
+    }
+  ]
+  export const metrics = [
+    {
+        name: 'Growing Active Sellers',
+        element: <MdStore size={30} color='#fff' />
+    },
+    {
+        name: 'Continuous Upgrade',
+        element: <MdUpgrade size={30} color='#fff'/>
+    },
+    {
+        name: 'Increasing Customers',
+        element: <MdPeople size={30} color='#fff' />
+    },
+    {
+        name: 'Increase your sales',
+        element: <FaNairaSign size={30} color='#fff' />
     }
   ]

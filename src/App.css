@@ -513,14 +513,52 @@ footer input {
 }
 .contact-div {
   display: flex;
+  justify-content: center;
+  padding: 3rem 0rem;
+  gap: 3rem;
 }
-.contact-div form {
-  flex: 1;
+.contact-form {
+  flex: 2.15;
   display: flex;
   flex-direction: column;
+  padding: 2rem 1rem;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.contact-div form div {
+.contact-form div {
   display: flex;
+  height: fit-content;
+}
+.contact-form div > div {
+  flex: 1;
+}
+.contact-form textarea {
+  flex: 1;
+  margin: 2rem 0.5rem;
+  padding: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  background-color: #f4f4f4;
+  border: none;
+  border-radius: 5px;
+}
+.contact-form > div > div > input {
+  flex: 1;
+  padding: 1rem;
+  height: fit-content;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  border: none
+}
+.contact-div p {
+  line-height: 1.4;
+  margin: 1rem 0rem;
+}
+.contact-div nav {
+  flex: 0.85;
+  padding: 2rem 1rem;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .profile-div {
   flex-direction: column;
@@ -612,10 +650,10 @@ select {
   width: 90px;
   height: 90px;
 }
-.pre-product-image-container {
+.pre-product-image-container, .pre-product-tag-container {
   position: relative;
 }
-.pre-product-image-container button {
+.pre-product-image-container button, .pre-product-tag-container button {
   position: absolute;
   padding: 0;
   margin: 0;
@@ -623,4 +661,37 @@ select {
   background-color: transparent;
   top: 10;
   left: 10;
+}
+.product-tag {
+  margin-right: 0;
+  padding: 0.75rem 1rem;
+  width: fit-content;
+  border-radius:45%;
+  border-color: #ccc;
+  color: #fff;
+  background-color: var(--primary-bg);
+}
+.icon-p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.about-page {
+  padding: 3rem 0rem;
+  line-height: 1.5;
+}
+.about-page h2 {
+  font-size: 32px;
+  margin: 2rem 0rem;
+  color: var(--primary-bg)
+}
+.about-section-1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5rem;
+}
+.customer-about-image {
+  width: 500px;
+  height: 400px;
 }

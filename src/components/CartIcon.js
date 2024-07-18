@@ -4,9 +4,7 @@ import cartIcon from '../img/cart.svg'
 const CartIcon = () => {
   return (
     <div>
-        <button>
-            <img src={cartIcon}></img>
-        </button>
+        <img src={cartIcon}></img>
     </div>
   )
 }

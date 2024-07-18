@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { category } from "../../app/utilities";
 
-
 const initialProducts = [
     {
         id: 1,
@@ -44,9 +43,15 @@ export const productSlice = createSlice({
     name: 'products',
     initialState: initialProducts,
     reducers: {
-
+        addProduct: {
+            reducer: (state, action) => {
+                state.push(action.payload)
+            }
+        }
     }
 })
 
 export const categoryProduct = category => initialProducts.filter(product => (product.category.contains(category)))
+export const { addProduct } =  productSlice.actions
+export const nextId = (state) => state.length
 export default productSlice.reducer
