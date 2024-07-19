@@ -4,10 +4,14 @@ import imagePane2 from '../img/imagepane.jpg'
 import Tag from '../components/Tag'
 import { useSelector } from 'react-redux'
 import ProductItem from '../components/ProductItem'
+import { useParams } from 'react-router-dom'
 
 
 const SelectedProduct = () => {
+  const { id } = useParams()
   const products = useSelector(state => state.products)
+  const product = products.filter(p => p.id == id)[0]
+  console.log(id)
   return (
     <>
       <p className='product-path-paragraph'>Account / Products / Black Pad</p>
@@ -22,14 +26,10 @@ const SelectedProduct = () => {
           <img alt={`Newly Listed ${'item'}`} src={imagePane}/>
         </div>
         <div className='product-detail-div'>
-          <p style={{fontFamily: 'inter', fontWeight: '600', fontSize: '24px'}}>Men's Jouggers & T-Shirts</p>
-          <p>Item Ratings (3.5/5)</p>
-          <p style={{color: '#e0960c', fontSize: '18px'}}>$700</p>
-          <p>
-            Item descriptionNote that 
-            the development build is not optimized.
-            To create a production build
-          </p>
+          <p style={{fontFamily: 'inter', fontWeight: '600', fontSize: '24px'}}>{product.name}</p>
+          <p>Ratings {(product.ratings == true) ? product.ratings/5 : 'Not Available'}</p>
+          <p style={{color: '#e0960c', fontSize: '18px'}}>${product.price}</p>
+          <p>{product.description}</p>
         </div>
       </div>
       <div className='product-list'>
