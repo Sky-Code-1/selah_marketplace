@@ -270,6 +270,9 @@ main nav button:hover {
   padding: 1rem;
   border-radius: 5px;
 }
+.product-details:hover {
+  cursor: pointer;
+}
 .product-image {
   position: relative;
   background-color: #f4f4f4;

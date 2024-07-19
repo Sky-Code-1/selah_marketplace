@@ -14,16 +14,18 @@ import Messages from './pages/Messages';
 import Cart from './pages/Cart';
 import AddStore from './pages/AddStore';
 import ErrorPage from './pages/ErrorPage';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
 
   return (
     <>
         <Header />
+        <ScrollToTop />
         <main>
         <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/product' element={<SelectedProduct />} />
+            <Route path='/product/:id' element={<SelectedProduct />} />
             <Route path='/wishlist' element={<WishList />} />
             <Route path='/profile/*' element={<Profile />} />
             <Route path='/about' element={<About />} />

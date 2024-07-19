@@ -5,14 +5,19 @@ import { FaHeart } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
 import WishList from '../pages/WishList';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 const ProductItem = ({product}) => {
   const location = useLocation();
   const [currentPath, setCurrentPath] = useState(location.pathname)
-
+  const navigate = useNavigate()
+  const showProduct = (id) => {
+    navigate(`/product/${id}`)
+  }
   return (
-    <div className='product-details'>
+    <div className='product-details' onClick={() => showProduct(product.id)}>
       <div className='product-image'>
         <div className='product-icon-container'>
           {!currentPath.endsWith("wishlist") && <><FaHeart /><FaEye /></>}

@@ -21,7 +21,7 @@ const Home = () => {
             <Tag status="Today's Pick" category="Trending Sales" />
             <div className='trending-product-list'>
                 {products.map(product => (
-                <ProductItem product={product}/>
+                    <ProductItem product={product}/>
                 ))}
             </div>
             <div className='category-btn-container'>
