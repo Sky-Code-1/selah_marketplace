@@ -1,4 +1,5 @@
 import React from 'react'
+import { MdSend } from 'react-icons/md'
 
 const Messages = () => {
     return (
@@ -17,36 +18,36 @@ const Messages = () => {
                     <li><button>Beauty</button></li>
                 </ul>
             </nav>
-            <div className='message-body'>
-                <div className='sender'>
-                    <p>
-                        Hello Good day I see that you're willing to make a purchase I would love to know how many it is that you'll love to buy
-                    </p>
+            <div className='message-content'>
+                <div className='message-body'>
+                    <div className='sender'>
+                        <p>
+                            Hello Good day I see that you're willing to make a purchase I would love to know how many it is that you'll love to buy
+                        </p>
+                    </div>
+                    <div className='receiver'>
+                        <p>
+                            Hello Good day I see that you're willing to make a purchase I would love to know how many it is that you'll love to buy
+                        </p>
+                    </div>
+                    <div className='sender'>
+                        <p>
+                            Hello Good day I see that you're willing to make a purchase I would love to know how many it is that you'll love to buy
+                        </p>
+                    </div>
+                    <div className='receiver'>
+                        <p>
+                            Hello Good day I see that you're willing to make a purchase I would love to know how many it is that you'll love to buy
+                        </p>
+                    </div>
                 </div>
-                <div className='receiver'>
-                    <p>
-                        Hello Good day I see that you're willing to make a purchase I would love to know how many it is that you'll love to buy
-                    </p>
-                </div>
-                <div className='sender'>
-                    <p>
-                        Hello Good day I see that you're willing to make a purchase I would love to know how many it is that you'll love to buy
-                    </p>
-                </div>
-                <div className='receiver'>
-                    <p>
-                        Hello Good day I see that you're willing to make a purchase I would love to know how many it is that you'll love to buy
-                    </p>
-                </div>
-                <div className='sender'>
-                    <p>
-                        Hello Good day I see that you're willing to make a purchase I would love to know how many it is that you'll love to buy
-                    </p>
-                </div>
-                <div className='receiver'>
-                    <p>
-                        Hello Good day I see that you're willing to make a purchase I would love to know how many it is that you'll love to buy
-                    </p>
+                <div className='message-box'>
+                    <form>
+                        <div className='header-search-container'>
+                            <input className='search-input' type='text' placeholder='Send A new Message'/>
+                            <button type='button'><MdSend size={20} color='#ccc' /></button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

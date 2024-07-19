@@ -180,17 +180,21 @@ footer a {
   flex: 1 !important;
   margin: 2rem;
 }
-.message-body {
+.message-content {
   position: relative;
-  flex: 3;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
+  max-height: 70vh;
   border: solid 1px #ccc;
   border-radius: 15px;
+  flex: 3;
+  display: flex;
   margin: 2rem;
-  overflow-y: scroll;
-  max-height: 70vh;
+}
+.message-body {
+  padding: 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
 }
 .message-body .sender, .message-body .receiver  {
   padding: 1rem;
@@ -200,11 +204,35 @@ footer a {
   color: #fff;
   align-items: start;
   border-radius: 15px;
-  width: 45%;
+  width: 60%;
 }
 .message-body .receiver {
   background-color: var(--secondary-bg);
   color: #fff;
-  width: 50%;
   align-self: flex-end;
 }
+.message-box {
+  display: flex;
+  position: absolute;
+  flex: 1;
+  right: 0; 
+  left: 0;
+  bottom: 0;
+  height: fit-content;
+  padding: 1rem;
+  z-index: 1;
+}
+.message-content form {
+  padding: 0rem 1rem;
+  display: flex;
+  flex: 1;
+}
+.message-box form input {
+  display: flex;
+  flex: 1;
+}
+/* .message-box form button {
+  width: 2rem;
+  background-color: transparent;
+  border: none;
+} */
