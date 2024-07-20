@@ -1,27 +1,36 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import supabase from '../config/supabaseConfig'
 
 const LoginForm = () => {
-    const [user, setUser] = useState({
-        name: '',
-        password: ''
-    })
     const onInputChange = (e) => {
         setUser({...user, [e.target.name]: e.target.value})
     }
-    const login = () => {
-        alert('logging in')
-    }
     const navigate = useNavigate()
+    const [user, setUser] = useState({
+        email: '',
+        password: ''
+    })
+    const handleLogin = async () => {
+        let { data, error } = await supabase.auth.signInWithPassword(user)
+        if(data.user) {
+            console.log(data)
+            console.log('SignIn Successful')
+            navigate('/')
+        }
+        if(error) {
+            alert(`Invalid Credentials`)
+        }
+    }
   return (
     <div className='reg-form-div'>
         <p className='bold-p'>Sign in To <span>Uniplaza</span></p>
         <p>Enter your details below</p>
         <form>
-            <input placeholder='Email' name='name' value={user.name} onChange={onInputChange}/>
-            <input placeholder='Password'name='password' value={user.password} onChange={onInputChange}/>
+            <input placeholder='Email' type='email' name='email' value={user.email} onChange={onInputChange}/>
+            <input placeholder='Password' type='password' name='password' value={user.password} onChange={onInputChange}/>
             <div>
-                <button type='button' onClick={login}>Login</button>
+                <button type='button' onClick={handleLogin}>Login</button>
                 <Link>Forget Password</Link>
             </div>
             <button type='button'>Sign In With Google</button>
