@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import ImagePane from '../components/ImagePane'
 import ProductItem from '../components/ProductItem'
 import Tag from '../components/Tag'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { category, services } from '../app/utilities'
+import { allProducts, fetchProducts } from '../features/products/productsSlice'
 import StoreItem from '../components/StoreItem'
 
+
 const Home = () => {
-  
+  const dispatch = useDispatch()
   const stores = useSelector(state => state.store);
-  const products = useSelector(state => state.products);
+  const products = useSelector(allProducts);
+  useEffect(() => {
+    dispatch(fetchProducts())
+  }, [])
   return (
     <>
         <div className='home-div-1'>

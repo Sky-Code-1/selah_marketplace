@@ -1,57 +1,51 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { category } from "../../app/utilities";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import supabase from "../../config/supabaseConfig";
 
-const initialProducts = [
-    {
-        id: 1,
-        name: 'Fresh Orange Fruits',
-        price: 300,
-        ratings: 9.7,
-        description: 'Juicy Delicious and Satisfactory',
-        image: '',
-        category: 'Confectionaries'
-    },
-    {
-        id: 2,
-        name: 'Iphone 14 pro max',
-        price: 300,
-        ratings: 9.7,
-        description: 'Swift Elegant and Nice',
-        image: '',
-        category: 'Phones'
-    },
-    {
-        id: 3,
-        Name: 'Orange',
-        price: 300,
-        ratings: 9.7,
-        description: 'Juicy Delicious and Satisfactory',
-        image: '',
-        category: 'Food'
-    },
-    {
-        id: 4,
-        name: 'Orange',
-        price: 300,
-        ratings: 9.7,
-        description: 'Juicy Delicious and Satisfactory',
-        image: '',
-        category: 'computer'
-    }
-]
-export const productSlice = createSlice({
+const initialState = {
+    products: [],
+    status: '',
+    error: null
+}
+
+export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
+    const { data, error } = await supabase.from('products')
+        .select()
+    console.log(data)
+    return [...data]
+})
+
+export const addProduct = createAsyncThunk('products/addProduct', async (product) => {
+    const { data, error } = await supabase.from('products')
+        .insert(product)
+        .select()
+        .single()
+    return data
+})
+export const productsSlice = createSlice({
     name: 'products',
-    initialState: initialProducts,
+    initialState: initialState,
     reducers: {
-        addProduct: {
-            reducer: (state, action) => {
-                state.push(action.payload)
-            }
+        addProducts: (state, action) => {
+            state.products.push(action.payload)
         }
+    },
+    extraReducers(builder) {
+        builder
+            .addCase(fetchProducts.pending, (state, action) => {
+                console.log('Fetching Products From The Database Pending')
+            })
+            .addCase(fetchProducts.fulfilled, (state, action) => {
+                state.products = action.payload
+            })
+            .addCase(fetchProducts.rejected, () => console.log('Oops Fetching Products From The Database Failed An Error Occurred!'))
+            .addCase(addProduct.pending, () => console.log('Adding A new Product to the db'))
+            .addCase(addProduct.fulfilled, () => console.log('Product Added Successfully to the db'))
+            .addCase(addProduct.rejected, () => console.log('An Error Occurred'))
     }
 })
 
-export const categoryProduct = category => initialProducts.filter(product => (product.category.contains(category)))
-export const { addProduct } =  productSlice.actions
+export const allProducts = state => state.products.products
+export const { addProducts } = productsSlice.actions
+export const categoryProduct = (category) => allProducts.filter(product => (product.category.contains(category)))
 export const nextId = (state) => state.length
-export default productSlice.reducer
+export default productsSlice.reducer

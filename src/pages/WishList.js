@@ -2,9 +2,10 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import ProductItem from '../components/ProductItem'
 import Tag from '../components/Tag'
+import { allProducts } from '../features/products/productsSlice'
 
 const WishList = () => {
-    const products = useSelector(state => state.products)
+    const products = useSelector(allProducts)
   return (
     <div className='product-list'>
         <Tag status="My List" category="Saved Items (5)"/>
