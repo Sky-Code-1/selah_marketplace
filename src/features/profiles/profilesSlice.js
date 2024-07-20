@@ -4,10 +4,10 @@ import supabase from "../../config/supabaseConfig";
 
 const initialState = {
     profile: {
-        firstname: '',
-        lastname: '',
-        email: '',
-        address: ''
+        firstname: 'Anonymous Firstname',
+        lastname: 'Anonymous Lastname',
+        email: 'Anonymous@gmail.com',
+        address: '8, Belignham Avenue'
     }
 }
 
@@ -21,11 +21,12 @@ export const createProfile = createAsyncThunk('profile/createProfile', async (pr
     return data
 })
 
-export const fetchProfile = createAsyncThunk('profile/createProfile', async () => {
+export const fetchProfile = createAsyncThunk('profile/fetchProfile', async () => {
 
     const { count, error : countError } = await supabase
         .from('profiles')
         .select('*', { count: 'exact', head: true });
+        console.log(count)
     if(count > 0) {
         const { data, error } = await supabase.from('profile')
             .select()
@@ -34,11 +35,14 @@ export const fetchProfile = createAsyncThunk('profile/createProfile', async () =
             console.log(error)
         }
         return data
+    } else{
+        return initialState.profile
     }
+    
 })
 export const profilesSlice = createSlice({
     name: 'profiles',
-    initialState: profile,
+    initialState,
     reducers: {
 
     },
@@ -65,5 +69,5 @@ export const profilesSlice = createSlice({
     }
 })
 
-// export const 
+export const profile = state => state.profiles.profile
 export default profilesSlice.reducer

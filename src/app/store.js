@@ -7,7 +7,7 @@ const store = configureStore({
     reducer: {
         products: productsReducer,
         store: storesReducer,
-        profile: profileReducer
+        profiles: profileReducer
     }
 })
 

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProfile, profile } from '../features/profiles/profilesSlice';
 
-const ProfileDetails = () => {
-    const navigate = useNavigate();
+const ProfileDetails = ({ profile }) => {
+    const navigate = useNavigate()
     const navigateToProfileUpdate = () => {
         navigate('/profile/update')
     }
@@ -11,19 +13,19 @@ const ProfileDetails = () => {
         <h3>Your Profile</h3>
         <div>
             <p>First Name : </p>
-            <p>Johnson</p>
+            <p>{profile.firstname}</p>
         </div>
         <div>
             <p>Last Name : </p>
-            <p>Timothy</p>
+            <p>{profile.lastname}</p>
         </div>
         <div>
             <p>Email : </p>
-            <p>JohnsonT@gmail.com</p>
+            <p>{profile.email}</p>
         </div>
         <div>
             <p>Address : </p>
-            <p>8 Belignham Avenue</p>
+            <p>{profile.address}</p>
         </div>
         <div>
         <   button type='button' onClick={navigateToProfileUpdate}>Update Profile</button> 

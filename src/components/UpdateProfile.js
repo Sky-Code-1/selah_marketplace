@@ -1,6 +1,7 @@
 import React from 'react'
+import { createProfile } from '../features/profiles/profilesSlice'
 
-const UpdateProfile = () => {
+const UpdateProfile = ({ profile }) => {
   return (
     <div className='profile-form-div'>
         <form>
@@ -18,7 +19,7 @@ const UpdateProfile = () => {
             <div>
                 <div>
                     <label htmlFor='email'>Email</label>
-                    <input type='email' id='email'/>
+                    <input value={profile.email} type='email' id='email' disabled/>
                 </div>
                 <div>
                     <label htmlFor='address'>Address</label>
