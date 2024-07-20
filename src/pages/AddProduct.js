@@ -23,7 +23,7 @@ const AddProduct = () => {
       price: 250,
       ratings: 9.7,
       description: 'Juicy Delicious and Satisfactory',
-      image: '',
+      image: [],
       category: 'Confectionaries'
     }
   function addNewProduct(newProduct) {
