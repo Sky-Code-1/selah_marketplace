@@ -2,9 +2,8 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { MdCancel } from 'react-icons/md';
 
-const ProductImage = () => {
+const ProductImage = ({ files, setFiles }) => {
     const fileInputRef = useRef(null);
-    const [files, setFiles] = useState([]);
 
     const handleAddImage = () => {
         fileInputRef.current.value = null; 
