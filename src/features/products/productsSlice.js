@@ -14,13 +14,19 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts', async ()
     return [...data]
 })
 
-export const addProduct = createAsyncThunk('products/addProduct', async (product) => {
+export const addProduct = createAsyncThunk('products/addProduct', async (newProduct) => {
+    console.log('from productslice/addproduct ')
+    console.log(`Add a new product with value ${JSON.stringify(newProduct)}`)
     const { data, error } = await supabase.from('products')
-        .insert(product)
+        .insert(newProduct)
         .select()
         .single()
+    if(error) {
+        console.log(error.message)
+    }
     return data
 })
+
 export const productsSlice = createSlice({
     name: 'products',
     initialState: initialState,
@@ -40,9 +46,10 @@ export const productsSlice = createSlice({
             .addCase(fetchProducts.rejected, () => console.log('Oops Fetching Products From The Database Failed An Error Occurred!'))
             .addCase(addProduct.pending, () => console.log('Adding A new Product to the db'))
             .addCase(addProduct.fulfilled, () => console.log('Product Added Successfully to the db'))
-            .addCase(addProduct.rejected, () => console.log('An Error Occurred'))
+            .addCase(addProduct.rejected, () => console.log('An Error Occurred from adding product'))
     }
 })
+
 
 export const allProducts = state => state.products.products
 export const { addProducts } = productsSlice.actions

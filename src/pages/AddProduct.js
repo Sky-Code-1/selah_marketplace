@@ -5,40 +5,63 @@ import { MdCancel } from 'react-icons/md'
 import { addProduct } from '../features/products/productsSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import supabase from '../config/supabaseConfig'
+import { userId } from '../features/auth/authSlice'
 
 const AddProduct = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [tag, setTag] = useState()
+  const currentUserId = useSelector(userId)
+  const [tag, setTag] = useState('')
   const [tags, setTags] = useState([])
   const [files, setFiles] = useState([]);
+  const [imageUrls, setImageUrls] = useState([])
   const [product, setProduct] = useState({
     name: 'Fresh Mango Fruits',
     price: 250,
     ratings: 9.7,
     description: 'Juicy Delicious and Satisfactory',
-    image: [],
-    category: 'Confectionaries',
-    tags
+    // imageUrls: [],
+    category: 'Confectionaries'
   })
   const addTag = () => {
     setTags([...tags, tag])
     setTag('')
   }
-  const products = useSelector(state => state.products)
-  const newProduct = {
-      name: 'Fresh Mango Fruits',
-      price: 250,
-      ratings: 9.7,
-      description: 'Juicy Delicious and Satisfactory',
-      image: [],
-      category: 'Confectionaries'
+  const uploadFile = async (filePath, file) => {
+    const{ data, error } = await supabase.storage
+        .from('supabase_practice_bucker')
+        .upload(filePath, file)
+    if(error) {
+      console.log(error)
     }
-  function addNewProduct() {
+
+    if (data) {
+      console.log(data)
+      const imageData = supabase.storage.from('supabase_practice_bucker')
+            .getPublicUrl(`${filePath}`)
+      const url = imageData.data.publicUrl
+      return url
+    }
+  }
+
+  
+  const addNewProduct = async () => {
     setProduct(prev => ({...prev, tags: tags}))
-    console.log('Adding A new Product')
+    const uploadedImageUrls = await Promise.all(
+      Array.from(files).map(file => uploadFile(`${currentUserId}/${file.name}`, file))
+    );
+    setProduct(prev => ({...prev, imageUrls: uploadedImageUrls, tags}))
     console.log(JSON.stringify(product))
-    dispatch(addProduct(product))
+    const urlList = uploadedImageUrls.filter(url => url !== null)
+    console.log(urlList)
+    const updatedProduct = {
+      ...product,
+      image_urls: urlList,
+      tags: tags
+    };
+    console.log(updatedProduct)
+    dispatch(addProduct(updatedProduct))
     navigate('/')
   }
   const handleInputChange = (e) => setProduct(prev => ({...prev, [e.target.name] : e.target.value})) 
@@ -105,7 +128,7 @@ const AddProduct = () => {
         <div>
           <h2>Product Tags</h2>
           {<div className='flex wrap'>{
-            tags.map((tag, id) => <div className=' pre-product-tag-container'>
+            tags.map((tag, id) => <div key={id} className=' pre-product-tag-container'>
               <div>
                 <p className='product-tag'>{tag}</p>
               </div>
@@ -127,7 +150,7 @@ const AddProduct = () => {
           />
           <button type='button' disabled={!tag} onClick={addTag}>Add Tag</button>
         </div>
-        <button type='button' onClick={() => addNewProduct(newProduct)}>Add Product</button>
+        <button type='button' onClick={() => addNewProduct()}>Add Product</button>
       </div>
     </form>
   )

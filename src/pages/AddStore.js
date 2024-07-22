@@ -4,8 +4,7 @@ import ProductImage from '../components/ProductImage'
 import { MdCancel } from 'react-icons/md'
 import { addProduct } from '../features/products/productsSlice'
 
-const AddStore
- = () => {
+const AddStore = () => {
   const [tag, setTag] = useState()
   const [tags, setTags] = useState([])
   const addTag = () => {
@@ -16,7 +15,9 @@ const AddStore
   //Todo handle key click for enter keys
   const handleKeyClick = (event) => {
     
+
   }
+
   const deleteTag = (index) => {
       const filteredTags = tags.filter((tag, id) => index !== id)
       setTags(filteredTags)
@@ -62,7 +63,7 @@ const AddStore
         <div>
           <h2>Store Media</h2>
           <div>
-            <ProductImage />
+            {/* <ProductImage /> */}
           </div>
         </div>
         <div>

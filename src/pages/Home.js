@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { category, services } from '../app/utilities'
 import { allProducts, fetchProducts } from '../features/products/productsSlice'
 import StoreItem from '../components/StoreItem'
-import { getId, getUser, getUserId } from '../features/auth/authSlice'
+import { getUser, getUserId } from '../features/auth/authSlice'
 
 
 const Home = () => {
@@ -16,6 +16,7 @@ const Home = () => {
   const products = useSelector(allProducts);
   useEffect(() => {
     dispatch(getUser())
+    dispatch(getUserId())
     dispatch(fetchProducts())
   }, [])
   

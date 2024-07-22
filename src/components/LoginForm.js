@@ -15,7 +15,6 @@ const LoginForm = () => {
         let { data, error } = await supabase.auth.signInWithPassword(user)
         if(data.user) {
             console.log(data)
-            console.log('SignIn Successful')
             navigate('/')
         }
         if(error) {

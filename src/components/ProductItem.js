@@ -13,6 +13,7 @@ const ProductItem = ({product}) => {
   const location = useLocation();
   const [currentPath, setCurrentPath] = useState(location.pathname)
   const navigate = useNavigate()
+  if(product.image_url) console.log('Logging out product from product Item page')
   const showProduct = (id) => {
     navigate(`/product/${id}`)
   }
@@ -23,7 +24,7 @@ const ProductItem = ({product}) => {
           {!currentPath.endsWith("wishlist") && <><FaHeart /><FaEye /></>}
           {currentPath.endsWith("wishlist") && <button><MdDelete /></button>}
         </div>
-        <img alt={`clean ${product.name}`} src={imagePane}></img>
+        <img alt={`clean ${product.name}`} src={product.image_urls.length > 0 ? product.image_urls[0] : imagePane}></img>
       </div>
       <div>
         <p className='bold-text'>{product.name}</p>

@@ -6,22 +6,30 @@ import { useSelector } from 'react-redux'
 import ProductItem from '../components/ProductItem'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { allProducts, fetchProducts } from '../features/products/productsSlice'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
 
 
 const SelectedProduct = () => {
   const { id } = useParams()
   const navigate = useNavigate()
-  const products = useSelector(state => state.products)
+  const dispatch = useDispatch()
+  const products = useSelector(allProducts)
   const product = products.filter(p => p.id == id)[0]
   const navigateToMessage = () => {
     navigate('/messages')
   }
+  useEffect(() => {
+    dispatch(fetchProducts())
+  }, [])
+  // product.image_url.length > 0 ? product.image_url[0] : 
   return (
     <>
       <p className='product-path-paragraph'>Account &gt; Products &gt; Black Pad</p>
       <div className='single-product-container'>
         <div className='image-list-container'>
-          <button><img alt={`Newly Listed ${'item'}`} src={imagePane2}/></button>
+          <button><img alt={`Newly Listed ${'item'}`} src={product.image_urls.length > 0 ? product.image_urls[0] : imagePane2}/></button>
           <button><img alt={`Newly Listed ${'item'}`} src={imagePane}/></button>
           <button><img alt={`Newly Listed ${'item'}`} src={imagePane2}/></button>
           <button><img alt={`Newly Listed ${'item'}`} src={imagePane}/></button>
@@ -43,7 +51,7 @@ const SelectedProduct = () => {
         <Tag status={'Related Items'} category={'Recomended Products'}/>
         <div className='trending-product-list margin-bottom'>
             {products.map(product => (
-            <ProductItem product={product}/>
+              <ProductItem product={product}/>
             ))}
         </div>
 

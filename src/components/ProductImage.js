@@ -18,7 +18,7 @@ const ProductImage = ({ files, setFiles }) => {
         const selectedFiles = event.target.files;
         // setImageURLs(urls);
         console.log(`New Length of File ${selectedFiles.length}`)
-        setFiles([...files, ...selectedFiles]);
+        setFiles([...files, ...(Array.from(selectedFiles))]);
     }
     useEffect(() => {}, [])
     const Images = ({src, index}) => (
